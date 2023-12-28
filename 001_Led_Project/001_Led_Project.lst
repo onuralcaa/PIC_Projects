@@ -1,0 +1,73 @@
+MPASM  5.50               001_LED_PROJECT.ASM   12-28-2023  0:16:26         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;PORTB -> 0. pina baðlý led kontrolü
+Warning[205]: Found directive in column 1. (ORG)
+0000                  00002 ORG 0x00
+                      00003 ;PORT AYARLARI
+Warning[203]: Found opcode in column 1. (BCF)
+0000   1303           00004 BCF  h'03',6      ;RP1=0
+Warning[203]: Found opcode in column 1. (BSF)
+0001   1683           00005 BSF h'03',5       ;RP0=1 : 01 Bank01
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0186           00006 CLRF h'86'        ;TRISB=0
+Warning[203]: Found opcode in column 1. (BCF)
+0003   1283           00007 BCF h'03',5       ;RP0=0 : 00 Bank0
+Warning[203]: Found opcode in column 1. (CLRF)
+0004   0186           00008 CLRF h'06'        ;PORTB=0
+                      00009 
+Warning[207]: Found label after column 1. (Devam)
+0005                  00010   Devam
+                      00011         ;YAKMA
+0005   1406           00012         BSF h'06',0
+0006   30FF           00013         MOVLW d'255'
+0007   00A0           00014         MOVWF 0x20
+Warning[207]: Found label after column 1. (SAY1)
+0008                  00015         SAY1 ; BEKLEME
+0008   0BA0           00016                 DECFSZ 0x20,1
+0009   2808           00017         GOTO SAY1
+                      00018 
+                      00019         ;SONDURME
+000A   1006           00020         BCF h'06',0
+000B   30FF           00021         MOVLW d'255'
+000C   00A0           00022         MOVWF 0x20
+Warning[207]: Found label after column 1. (SAY2)
+000D                  00023         SAY2 ; BEKLEME
+000D   0BA0           00024                 DECFSZ 0x20,1
+000E   280D           00025         GOTO SAY2
+                      00026 
+000F   2805           00027   GOTO Devam
+Warning[205]: Found directive in column 1. (END)
+                      00028 END
+MPASM  5.50               001_LED_PROJECT.ASM   12-28-2023  0:16:26         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Devam                             00000005
+SAY1                              00000008
+SAY2                              0000000D
+__16F877                          00000001
+__DEBUG                           1
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    16
+Program Memory Words Free:  8176
+
+
+Errors   :     0
+Warnings :    10 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+
