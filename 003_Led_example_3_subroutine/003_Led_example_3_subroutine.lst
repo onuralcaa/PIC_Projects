@@ -1,0 +1,75 @@
+MPASM  5.50  003_LED_EXAMPLE_3_SUBROUTINE.ASM   12-29-2023  14:25:04         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;PORTB -> 0. pina baðlý led kontrolü
+                      00002 
+                      00003 ;define tanýmlamalarý
+  00000003            00004 STATUS EQU H'0003'
+  00000006            00005 PORTB EQU H'0006'
+  00000086            00006 TRISB EQU H'0086'
+  00000020            00007 N EQU H'0020'
+                      00008 
+Warning[205]: Found directive in column 1. (ORG)
+                      00009 ORG 0x00
+                      00010 
+                      00011 ;PORT AYARLARI
+Warning[203]: Found opcode in column 1. (BCF)
+0000   1303           00012 BCF  STATUS,6       ;RP1=0
+Warning[203]: Found opcode in column 1. (BSF)
+0001   1683           00013 BSF  STATUS,5       ;RP0=1 : 01 Bank01
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0186           00014 CLRF TRISB          ;TRISB=0
+Warning[203]: Found opcode in column 1. (BCF)
+0003   1283           00015 BCF  STATUS,5       ;RP0=0 : 00 Bank0
+Warning[203]: Found opcode in column 1. (CLRF)
+0004   0186           00016 CLRF PORTB          ;PORTB=0
+                      00017 
+Warning[207]: Found label after column 1. (Devam)
+0005                  00018   Devam
+                      00019         ;YAKMA
+0005   1406           00020         BSF PORTB,0
+0006   2???           00021         CALL Gecikme
+                      00022 
+                      00023         ;SONDURME
+0007   1006           00024         BCF PORTB,0
+0008   2???           00025         CALL Gecikme
+0009   2???           00026   GOTO Devam
+                      00027 
+                      00028 ;alt program
+000A                  00029 Gecikme
+000A   30FF           00030         MOVLW d'255'
+000B   00A0           00031         MOVWF N
+Warning[207]: Found label after column 1. (SAY1)
+000C                  00032         SAY1 ; BEKLEME
+000C   0BA0           00033                 DECFSZ N,1
+000D   2???           00034         GOTO SAY1
+Warning[203]: Found opcode in column 1. (RETURN)
+000E   0008           00035 RETURN
+                      00036 
+Warning[205]: Found directive in column 1. (END)
+                      00037 END
+MPASM  5.50  003_LED_EXAMPLE_3_SUBROUTINE.ASM   12-29-2023  14:25:04         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Devam                             00000005
+Gecikme                           0000000A
+N                                 00000020
+PORTB                             00000006
+SAY1                              0000000C
+STATUS                            00000003
+TRISB                             00000086
+__16F877                          00000001
+__DEBUG                           1
+
+Errors   :     0
+Warnings :    10 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

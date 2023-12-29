@@ -1,0 +1,36 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Fri Dec 29 14:25:05 2023
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00001e
+                   .cinit    romdata   0x00000f    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000010      
+            17 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    Devam   0x000005    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+                  Gecikme   0x00000a    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+                     SAY1   0x00000c    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    Devam   0x000005    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+                  Gecikme   0x00000a    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+                     SAY1   0x00000c    program     static C:\PIC\003_Led_example_3_subroutine\003_Led_example_3_subroutine.asm
+
+
