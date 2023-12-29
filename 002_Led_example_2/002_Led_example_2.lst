@@ -1,0 +1,74 @@
+MPASM  5.50             002_LED_EXAMPLE_2.ASM   12-28-2023  20:00:53         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 ;PORTB -> 0. pina baðlý led kontrolü
+                      00002 
+                      00003 ;define tanýmlamalarý
+  00000003            00004 STATUS EQU H'0003'
+  00000006            00005 PORTB EQU H'0006'
+  00000086            00006 TRISB EQU H'0086'
+  00000020            00007 N EQU H'0020'
+                      00008 
+                      00009 
+Warning[205]: Found directive in column 1. (ORG)
+                      00010 ORG 0x00
+                      00011 
+                      00012 ;PORT AYARLARI
+Warning[203]: Found opcode in column 1. (BCF)
+0000   1303           00013 BCF  STATUS,6       ;RP1=0
+Warning[203]: Found opcode in column 1. (BSF)
+0001   1683           00014 BSF  STATUS,5       ;RP0=1 : 01 Bank01
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0186           00015 CLRF TRISB          ;TRISB=0
+Warning[203]: Found opcode in column 1. (BCF)
+0003   1283           00016 BCF  STATUS,5       ;RP0=0 : 00 Bank0
+Warning[203]: Found opcode in column 1. (CLRF)
+0004   0186           00017 CLRF PORTB          ;PORTB=0
+                      00018 
+Warning[207]: Found label after column 1. (Devam)
+0005                  00019   Devam
+                      00020         ;YAKMA
+0005   1406           00021         BSF PORTB,0
+0006   30FF           00022         MOVLW d'255'
+0007   00A0           00023         MOVWF N
+Warning[207]: Found label after column 1. (SAY1)
+0008                  00024         SAY1 ; BEKLEME
+0008   0BA0           00025                 DECFSZ N,1
+0009   2???           00026         GOTO SAY1
+                      00027 
+                      00028         ;SONDURME
+000A   1006           00029         BCF PORTB,0
+000B   30FF           00030         MOVLW d'255'
+000C   00A0           00031         MOVWF N
+Warning[207]: Found label after column 1. (SAY2)
+000D                  00032         SAY2 ; BEKLEME
+000D   0BA0           00033                 DECFSZ N,1
+000E   2???           00034         GOTO SAY2
+000F   2???           00035   GOTO Devam
+Warning[205]: Found directive in column 1. (END)
+                      00036 END
+MPASM  5.50             002_LED_EXAMPLE_2.ASM   12-28-2023  20:00:53         PAGE  2
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+Devam                             00000005
+N                                 00000020
+PORTB                             00000006
+SAY1                              00000008
+SAY2                              0000000D
+STATUS                            00000003
+TRISB                             00000086
+__16F877                          00000001
+__DEBUG                           1
+
+Errors   :     0
+Warnings :    10 reported,     0 suppressed
+Messages :     1 reported,     0 suppressed
+
+

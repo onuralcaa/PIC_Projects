@@ -1,0 +1,11 @@
+Warning[205] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 10 : Found directive in column 1. (ORG)
+Warning[203] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 13 : Found opcode in column 1. (BCF)
+Warning[203] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 14 : Found opcode in column 1. (BSF)
+Warning[203] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 15 : Found opcode in column 1. (CLRF)
+Message[302] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 15 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 16 : Found opcode in column 1. (BCF)
+Warning[203] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 17 : Found opcode in column 1. (CLRF)
+Warning[207] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 19 : Found label after column 1. (Devam)
+Warning[207] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 24 : Found label after column 1. (SAY1)
+Warning[207] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 32 : Found label after column 1. (SAY2)
+Warning[205] C:\PIC\002_LED_EXAMPLE_2\002_LED_EXAMPLE_2.ASM 36 : Found directive in column 1. (END)
