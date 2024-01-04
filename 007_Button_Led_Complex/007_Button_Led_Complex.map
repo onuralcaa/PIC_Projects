@@ -1,0 +1,37 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Thu Jan 04 13:44:59 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .cinit    romdata   0x000000    program   0x000004
+                   .org_0       code   0x000100    program   0x000022
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000001      
+                            0x000100    0x000110      
+            19 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 AnaDongu   0x00010a    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+                   devam1   0x00010b    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+                   devam2   0x00010e    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 AnaDongu   0x00010a    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+                   devam1   0x00010b    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+                   devam2   0x00010e    program     static C:\PIC\007_Button_Led_Complex\007_Button_Led_Complex.asm
+
+
