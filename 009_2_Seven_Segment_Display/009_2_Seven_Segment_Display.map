@@ -1,0 +1,42 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Sat Jan 13 21:29:33 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000056
+                   .cinit    romdata   0x00002b    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00002c      
+            45 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    DEVAM   0x00000a    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     DISP   0x000013    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                    GECÝK   0x000017    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                   SEVSEG   0x000020    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     say1   0x000019    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     say2   0x00001b    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    DEVAM   0x00000a    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     DISP   0x000013    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                    GECÝK   0x000017    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     say1   0x000019    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                     say2   0x00001b    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+                   SEVSEG   0x000020    program     static C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.asm
+
+
