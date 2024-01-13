@@ -1,0 +1,14 @@
+Warning[205] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 1 : Found directive in column 1. (include)
+Message[302] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 7 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 13 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 17 : Found label after column 1. (SAY)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 18 : Found label after column 1. (SAY2)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 19 : Found label after column 1. (N)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 20 : Found label after column 1. (M)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 23 : Found label after column 1. (DEVAM)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 36 : Found label after column 1. (RESET)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 39 : Found label after column 1. (DISP)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 50 : Found label after column 1. (GECIK)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 53 : Found label after column 1. (say1)
+Warning[207] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 62 : Found label after column 1. (SEVSEG)
+Warning[205] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 75 : Found directive in column 1. (END)
