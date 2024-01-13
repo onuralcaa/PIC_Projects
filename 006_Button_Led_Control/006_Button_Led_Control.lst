@@ -1,4 +1,4 @@
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  1
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -19,61 +19,61 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00004          
                       00005         org 0x100
                       00006 
-                      00007 ;PORT AYARLARI
+                      00007 ;PORT AYARLARI (TRIS AYARI -> GÝRÝÞ MÝ , ÇIKIÞ MI ?)
 Warning[203]: Found opcode in column 1. (bcf)
 0100   1303           00008 bcf STATUS, RP1
 Warning[203]: Found opcode in column 1. (bsf)
 0101   1683           00009 bsf STATUS, RP0 ; 01 :BANK1 E GEÇ
 Warning[203]: Found opcode in column 1. (clrf)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0102   0186           00010 clrf TRISB
+0102   0186           00010 clrf TRISB 
                       00011 
-                      00012 ;giriþ olarak kullanmayý saðlar (a portu için özel durum)
-Warning[203]: Found opcode in column 1. (MOVLW)
-0103   3006           00013 MOVLW 0x06
+                      00012 ;giriþ olarak kullanmayý saðlar (a portunu giriþ olarak ayarlamak için özel durum)
+                      00013 ;diðer portlarda bu özel durum yok.
+Warning[203]: Found opcode in column 1. (movlw)
+0103   3006           00014 movlw 0x06
 Warning[203]: Found opcode in column 1. (movwf)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0104   009F           00014 movwf ADCON1
-                      00015 
+0104   009F           00015 movwf ADCON1
+                      00016 
 Warning[203]: Found opcode in column 1. (clrf)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0105   0185           00016 clrf TRISA
+0105   0185           00017 clrf TRISA
 Warning[203]: Found opcode in column 1. (bsf)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0106   1405           00017 bsf TRISA, 0  ;RA0 giriþ olarak ayarlandý.
+0106   1405           00018 bsf TRISA, 0  ;RA0 giriþ olarak ayarlandý.
 Warning[203]: Found opcode in column 1. (bcf)
-0107   1283           00018 bcf STATUS, RP0 ; 00 :BANK0 A GEÇ
-                      00019 
-                      00020 ;port sýfýrlama
-Warning[203]: Found opcode in column 1. (clrf)
-0108   0185           00021 clrf PORTA
-Warning[203]: Found opcode in column 1. (clrf)
-0109   0186           00022 clrf PORTB
-                      00023 
-010A                  00024 AnaDongu
-010A   1006           00025         bcf PORTB, RB0   ; LED OFF
+0107   1283           00019 bcf STATUS, RP0 ; 00 :BANK0 A GEÇ
+                      00020 
+                      00021 ;port sýfýrlama
+                      00022 ;clrf PORTA
+                      00023 ;clrf PORTB
+                      00024 
+0108                  00025 AnaDongu
+0108   1006           00026         bcf PORTB, RB0   ; LED OFF
 Warning[207]: Found label after column 1. (devam1)
-010B                  00026         devam1
-010B   1805           00027                 btfsc PORTA, RA0  ;RA0=0 mý ?
-010C   2???           00028         goto devam1
-010D   1406           00029         bsf PORTB, RB0   ; LED ON
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  2
+0109                  00027         devam1
+0109   1805           00028                 btfsc PORTA, RA0  ;RA0=0 mý ?
+010A   2???           00029         goto devam1
+010B   1406           00030         bsf PORTB, RB0   ; LED ON
+                      00031         
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
+                      00032         ;basýlý tutma durumu
 Warning[207]: Found label after column 1. (devam2)
-010E                  00030         devam2
-010E   1C05           00031                 btfss PORTA, RA0  ;RA0=1 mi ?
-010F   2???           00032         goto devam2
-                      00033         
-                      00034 
+010C                  00033         devam2
+010C   1C05           00034                 btfss PORTA, RA0  ;RA0=1 mi ?
+010D   2???           00035         goto devam2
+                      00036 
 Warning[203]: Found opcode in column 1. (goto)
-0110   2???           00035 goto AnaDongu
+010E   2???           00037 goto AnaDongu
 Warning[205]: Found directive in column 1. (END)
-                      00036 END
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  3
+                      00038 END
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  3
 
 
 SYMBOL TABLE
@@ -93,7 +93,7 @@ ADIF                              00000006
 ADON                              00000000
 ADRESH                            0000001E
 ADRESL                            0000009E
-AnaDongu                          0000010A
+AnaDongu                          00000108
 BCLIE                             00000003
 BCLIF                             00000003
 BF                                00000000
@@ -132,7 +132,7 @@ CREN                              00000004
 CSRC                              00000007
 D                                 00000005
 DATA_ADDRESS                      00000005
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  4
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  4
 
 
 SYMBOL TABLE
@@ -191,7 +191,7 @@ P                                 00000004
 PCFG0                             00000000
 PCFG1                             00000001
 PCFG2                             00000002
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  5
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  5
 
 
 SYMBOL TABLE
@@ -250,7 +250,7 @@ RC9                               00000006
 RCD8                              00000000
 RCEN                              00000003
 RCIE                              00000005
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  6
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  6
 
 
 SYMBOL TABLE
@@ -309,7 +309,7 @@ T1CKPS1                           00000005
 T1CON                             00000010
 T1INSYNC                          00000002
 T1OSCEN                           00000003
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  7
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  7
 
 
 SYMBOL TABLE
@@ -368,7 +368,7 @@ TRISD1                            00000001
 TRISD2                            00000002
 TRISD3                            00000003
 TRISD4                            00000004
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  8
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  8
 
 
 SYMBOL TABLE
@@ -427,7 +427,7 @@ _LVP_ON                           00003FFF
 _PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
 _RC_OSC                           00003FFF
-MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-4-2024  12:30:17         PAGE  9
+MPASM  5.50        006_BUTTON_LED_CONTROL.ASM   1-12-2024  22:56:37         PAGE  9
 
 
 SYMBOL TABLE
@@ -444,11 +444,11 @@ _WRT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F877                          00000001
 __DEBUG                           1
-devam1                            0000010B
-devam2                            0000010E
+devam1                            00000109
+devam2                            0000010C
 
 Errors   :     0
-Warnings :    14 reported,     0 suppressed
+Warnings :    12 reported,     0 suppressed
 Messages :     4 reported,     0 suppressed
 
 

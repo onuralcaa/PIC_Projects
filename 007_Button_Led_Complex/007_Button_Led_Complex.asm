@@ -1,38 +1,63 @@
-; porta[0] ya baðlý butona basýlýnca portb[0] ya baðlý ledin yakýlmasý
+;PORTB -> 0. pina baðlý led kontrolü
 
-	include "P16F877.INC"
-	 
-	org 0x100
+include "P16F877.INC"
 
+ORG 0x00
 ;PORT AYARLARI
-bcf STATUS, RP1
-bsf STATUS, RP0 ; 01 :BANK1 E GEÇ
-clrf TRISB
+BCF STATUS, RP1 
+BSF STATUS, RP0
+CLRF TRISB   ;TRISB=0
 
-;giriþ olarak kullanmayý saðlar (a portunu giriþ olarak ayarlamak için özel durum)
-;diðer portlarda bu özel durum yok.
 MOVLW 0x06
-movwf ADCON1
+MOVWF ADCON1
 
-clrf TRISA
-bsf TRISA, 0  ;RA0 giriþ olarak ayarlandý.
-bcf STATUS, RP0 ; 00 :BANK0 A GEÇ
+CLRF TRISA   ;TRISA=0
+BSF TRISA, 0
+BCF STATUS, RP0
 
 ;port sýfýrlama
-clrf PORTA
-clrf PORTB
+CLRF PORTA
+CLRF PORTB
+
+N EQU H'0020'
 
 AnaDongu
-	bcf PORTB, RB0   ; LED OFF
-	devam1
-		btfsc PORTA, RA0  ;RA0=0 mý ?
-	goto devam1
-	bsf PORTB, RB0   ; LED ON
-	
-	;basýlý tutma durumu
-	devam2
-		btfss PORTA, RA0  ;RA0=1 mi ?
-	goto devam2
 
-goto AnaDongu
+	dongu1
+		BTFSC PORTA,RA0
+	GOTO dongu1
+	BSF PORTB,RB0
+	CALL Gecikme
+
+	dongu2
+		BTFSC PORTA,RA0
+	GOTO dongu2
+	BCF PORTB,RB0
+	CALL Gecikme
+
+	goto AnaDongu
+;alt program
+Gecikme
+	MOVLW d'125'
+	MOVWF N
+	SAY1 ; BEKLEME
+		DECFSZ N,1
+	GOTO SAY1
+RETURN
+
 END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

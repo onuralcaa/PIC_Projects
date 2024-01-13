@@ -2,7 +2,7 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=C:\PIC\001_Led_Project.o
+Location=C:\PIC\001_Led_Project\001_Led_Project.o
 Folder=Intermediary
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -15,7 +15,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File001]
-Location=C:\PIC\001_Led_Project.err
+Location=C:\PIC\001_Led_Project\001_Led_Project.err
 Folder=Intermediary
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -28,7 +28,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File002]
-Location=C:\PIC\001_Led_Project.hex
+Location=C:\PIC\001_Led_Project\001_Led_Project.hex
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -41,7 +41,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File003]
-Location=C:\PIC\001_Led_Project.lst
+Location=C:\PIC\001_Led_Project\001_Led_Project.lst
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -54,7 +54,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File004]
-Location=C:\PIC\001_Led_Project.cof
+Location=C:\PIC\001_Led_Project\001_Led_Project.cof
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}

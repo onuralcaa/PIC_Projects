@@ -2,17 +2,15 @@ Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 8 : Found 
 Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 9 : Found opcode in column 1. (bsf)
 Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 10 : Found opcode in column 1. (clrf)
 Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 10 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 13 : Found opcode in column 1. (MOVLW)
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 14 : Found opcode in column 1. (movwf)
-Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 14 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 16 : Found opcode in column 1. (clrf)
-Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 16 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 17 : Found opcode in column 1. (bsf)
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 14 : Found opcode in column 1. (movlw)
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 15 : Found opcode in column 1. (movwf)
+Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 15 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 17 : Found opcode in column 1. (clrf)
 Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 18 : Found opcode in column 1. (bcf)
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 21 : Found opcode in column 1. (clrf)
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 22 : Found opcode in column 1. (clrf)
-Warning[207] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 26 : Found label after column 1. (devam1)
-Warning[207] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 30 : Found label after column 1. (devam2)
-Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 35 : Found opcode in column 1. (goto)
-Warning[205] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 36 : Found directive in column 1. (END)
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 18 : Found opcode in column 1. (bsf)
+Message[302] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 18 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 19 : Found opcode in column 1. (bcf)
+Warning[207] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 27 : Found label after column 1. (devam1)
+Warning[207] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 33 : Found label after column 1. (devam2)
+Warning[203] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 37 : Found opcode in column 1. (goto)
+Warning[205] C:\PIC\006_BUTTON_LED_CONTROL\006_BUTTON_LED_CONTROL.ASM 38 : Found directive in column 1. (END)

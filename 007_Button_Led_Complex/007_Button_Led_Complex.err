@@ -1,18 +1,21 @@
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 8 : Found opcode in column 1. (bcf)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 9 : Found opcode in column 1. (bsf)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 10 : Found opcode in column 1. (clrf)
-Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 10 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 14 : Found opcode in column 1. (MOVLW)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 15 : Found opcode in column 1. (movwf)
+Warning[205] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 3 : Found directive in column 1. (include)
+Warning[205] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 5 : Found directive in column 1. (ORG)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 7 : Found opcode in column 1. (BCF)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 8 : Found opcode in column 1. (BSF)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 9 : Found opcode in column 1. (CLRF)
+Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 11 : Found opcode in column 1. (MOVLW)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 12 : Found opcode in column 1. (MOVWF)
+Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 12 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 14 : Found opcode in column 1. (CLRF)
+Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 14 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 15 : Found opcode in column 1. (BSF)
 Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 15 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 17 : Found opcode in column 1. (clrf)
-Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 17 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 18 : Found opcode in column 1. (bsf)
-Message[302] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 18 : Register in operand not in bank 0.  Ensure that bank bits are correct.
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 19 : Found opcode in column 1. (bcf)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 22 : Found opcode in column 1. (clrf)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 23 : Found opcode in column 1. (clrf)
-Warning[207] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 27 : Found label after column 1. (devam1)
-Warning[207] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 33 : Found label after column 1. (devam2)
-Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 37 : Found opcode in column 1. (goto)
-Warning[205] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 38 : Found directive in column 1. (END)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 16 : Found opcode in column 1. (BCF)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 19 : Found opcode in column 1. (CLRF)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 20 : Found opcode in column 1. (CLRF)
+Warning[207] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 26 : Found label after column 1. (dongu1)
+Warning[207] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 32 : Found label after column 1. (dongu2)
+Warning[207] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 43 : Found label after column 1. (SAY1)
+Warning[203] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 46 : Found opcode in column 1. (RETURN)
+Warning[205] C:\PIC\007_BUTTON_LED_COMPLEX\007_BUTTON_LED_COMPLEX.ASM 48 : Found directive in column 1. (END)

@@ -1,4 +1,4 @@
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  1
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -48,7 +48,7 @@ Warning[203]: Found opcode in column 1. (GOTO)
                       00025 
                       00026 ;GECÝKME FONK.
 000B                  00027 gecikme 
-000B   300A           00028         movlw .10 
+000B   30FF           00028         movlw .255 
 000C   00A0           00029         movwf N
 Warning[207]: Found label after column 1. (say1)
 000D                  00030         say1
@@ -57,7 +57,7 @@ Warning[207]: Found label after column 1. (say1)
 Warning[207]: Found label after column 1. (say2)
 000F                  00033         say2
 000F   0BA1           00034                 decfsz M,F
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  2
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -67,16 +67,13 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0011   0BA0           00036         decfsz N,F              
                       00037 
 0012   2???           00038         goto say1
-                      00039 
-                      00040         
-                      00041         
-                      00042         
-                      00043 
 Warning[203]: Found opcode in column 1. (return)
-0013   0008           00044 return 
+0013   0008           00039 return
+                      00040 
+                      00041  
 Warning[205]: Found directive in column 1. (END)
-                      00045 END
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  3
+                      00042 END
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  3
 
 
 SYMBOL TABLE
@@ -135,7 +132,7 @@ CSRC                              00000007
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  4
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  4
 
 
 SYMBOL TABLE
@@ -194,7 +191,7 @@ OPTION_REG                        00000081
 P                                 00000004
 PCFG0                             00000000
 PCFG1                             00000001
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  5
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  5
 
 
 SYMBOL TABLE
@@ -253,7 +250,7 @@ RC8_9                             00000006
 RC9                               00000006
 RCD8                              00000000
 RCEN                              00000003
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  6
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  6
 
 
 SYMBOL TABLE
@@ -312,7 +309,7 @@ T1CKPS0                           00000004
 T1CKPS1                           00000005
 T1CON                             00000010
 T1INSYNC                          00000002
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  7
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  7
 
 
 SYMBOL TABLE
@@ -371,7 +368,7 @@ TRISD0                            00000000
 TRISD1                            00000001
 TRISD2                            00000002
 TRISD3                            00000003
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  8
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  8
 
 
 SYMBOL TABLE
@@ -430,7 +427,7 @@ _LVP_OFF                          00003F7F
 _LVP_ON                           00003FFF
 _PWRTE_OFF                        00003FFF
 _PWRTE_ON                         00003FF7
-MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-4-2024  11:26:08         PAGE  9
+MPASM  5.50        005_BINARY_LED_CONTROL.ASM   1-13-2024  11:27:50         PAGE  9
 
 
 SYMBOL TABLE

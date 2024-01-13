@@ -1,4 +1,4 @@
-MPASM  5.50               001_LED_PROJECT.ASM   12-28-2023  0:16:26         PAGE  1
+MPASM  5.50               001_LED_PROJECT.ASM   1-12-2024  23:00:40         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -43,7 +43,7 @@ Warning[207]: Found label after column 1. (SAY2)
 000F   2805           00027   GOTO Devam
 Warning[205]: Found directive in column 1. (END)
                       00028 END
-MPASM  5.50               001_LED_PROJECT.ASM   12-28-2023  0:16:26         PAGE  2
+MPASM  5.50               001_LED_PROJECT.ASM   1-12-2024  23:00:40         PAGE  2
 
 
 SYMBOL TABLE

@@ -1,5 +1,5 @@
 MPLINK 4.48, Linker
-Linker Map File - Created Thu Dec 28 00:16:27 2023
+Linker Map File - Created Fri Jan 12 23:00:40 2024
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -19,17 +19,17 @@ Linker Map File - Created Thu Dec 28 00:16:27 2023
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    Devam   0x000005    program     static C:\PIC\001_Led_Project.asm
-                     SAY1   0x000008    program     static C:\PIC\001_Led_Project.asm
-                     SAY2   0x00000d    program     static C:\PIC\001_Led_Project.asm
+                    Devam   0x000005    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
+                     SAY1   0x000008    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
+                     SAY2   0x00000d    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                    Devam   0x000005    program     static C:\PIC\001_Led_Project.asm
-                     SAY1   0x000008    program     static C:\PIC\001_Led_Project.asm
-                     SAY2   0x00000d    program     static C:\PIC\001_Led_Project.asm
+                    Devam   0x000005    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
+                     SAY1   0x000008    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
+                     SAY2   0x00000d    program     static C:\PIC\001_Led_Project\001_Led_Project.asm
 
 

@@ -4,23 +4,24 @@
 	 
 	org 0x100
 
-;PORT AYARLARI
+;PORT AYARLARI (TRIS AYARI -> GÝRÝÞ MÝ , ÇIKIÞ MI ?)
 bcf STATUS, RP1
 bsf STATUS, RP0 ; 01 :BANK1 E GEÇ
-clrf TRISB
+clrf TRISB 
 
 ;giriþ olarak kullanmayý saðlar (a portunu giriþ olarak ayarlamak için özel durum)
 ;diðer portlarda bu özel durum yok.
-MOVLW 0x06
+movlw 0x06
 movwf ADCON1
 
+;D portunu kullansaydýn direk buradaki A - D deðiþimi yapar üstteki ayarý silerdik.
 clrf TRISA
 bsf TRISA, 0  ;RA0 giriþ olarak ayarlandý.
 bcf STATUS, RP0 ; 00 :BANK0 A GEÇ
 
 ;port sýfýrlama
-clrf PORTA
-clrf PORTB
+;clrf PORTA
+;clrf PORTB
 
 AnaDongu
 	bcf PORTB, RB0   ; LED OFF

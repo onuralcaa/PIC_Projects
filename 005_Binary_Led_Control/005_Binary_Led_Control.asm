@@ -12,7 +12,7 @@ clrf PORTD
 N equ 0x20
 M equ 0x21
 
-devam
+devam;anadongu
 	movlw h'00'
 	movwf PORTD
 	say
@@ -23,9 +23,9 @@ devam
 
 GOTO devam
 
-;GECÝKME FONK.
+;GECÝKME FONK.(alt program)
 gecikme 
-	movlw .10 
+	movlw .255 
 	movwf N
 	say1
 	movlw .255 
@@ -36,10 +36,7 @@ gecikme
 	decfsz N,F		
 
 	goto say1
+return
 
-	
-	
-	
-
-return 
+ 
 END
