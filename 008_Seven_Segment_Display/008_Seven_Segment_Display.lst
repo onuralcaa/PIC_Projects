@@ -1,10 +1,10 @@
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  1
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00001 ;Sayaç ile seven segment disp kullanýmý
+                      00001 ;D portune baðlý 8 adet led ile binary sayma iþlemi
                       00002 
                       00003         include "P16F877.INC"
                       00001         LIST
@@ -17,89 +17,89 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00008 
                       00540         LIST
                       00004 
-                      00005         org 0x100
+                      00005         ORG 0x00
                       00006 
-Warning[203]: Found opcode in column 1. (bcf)
-0100   1303           00007 bcf STATUS, RP1
-Warning[203]: Found opcode in column 1. (bsf)
-0101   1683           00008 bsf STATUS, RP0
-Warning[203]: Found opcode in column 1. (clrf)
+Warning[203]: Found opcode in column 1. (BCF)
+0000   1303           00007 BCF STATUS, RP1
+Warning[203]: Found opcode in column 1. (BSF)
+0001   1683           00008 BSF STATUS, RP0
+Warning[203]: Found opcode in column 1. (CLRF)
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0102   0186           00009 clrf TRISB
-                      00010 
-Warning[203]: Found opcode in column 1. (bcf)
-0103   1283           00011 bcf STATUS, RP0
-Warning[203]: Found opcode in column 1. (clrf)
-0104   0186           00012 clrf PORTB
-                      00013 
-  00000020            00014 SAY EQU H'20'
-  00000021            00015 N EQU H'21'
-  00000022            00016 M EQU H'22'
-                      00017 
+0002   0186           00009 CLRF TRISB
+Warning[203]: Found opcode in column 1. (BCF)
+0003   1283           00010 BCF STATUS, RP0 ;bank0 seçildi
+Warning[203]: Found opcode in column 1. (CLRF)
+0004   0186           00011 CLRF PORTB
+                      00012 
+  00000020            00013 SAY EQU 0x20
+  00000021            00014 N EQU 0x21
+  00000022            00015 M EQU 0x22
+                      00016 
 Warning[203]: Found opcode in column 1. (MOVLW)
-0105   3000           00018 MOVLW H'00'
+0005   3000           00017 MOVLW H'00'
 Warning[203]: Found opcode in column 1. (MOVWF)
-0106   00A0           00019 MOVWF SAY
-                      00020 
-0107                  00021 DEVAM ;ANADÖNGÜ
-0107   0820           00022         MOVF SAY,W ;SAY DEÐERÝNÝ W YE ATA : W=SAY
-0108   390F           00023         ANDLW B'00001111' ;SAYININ(W) 15 Ý GEÇMEMESÝNÝ SAÐLAYAN AND ÝÞLEMÝ
-                      00024 
-0109   2???           00025         CALL SEVSEG
-010A   0086           00026         MOVWF PORTB ;PORTA GÖNDER
-010B   0AA0           00027         INCF SAY,F ;SAY = SAY+1
-                      00028         
-010C   2???           00029         CALL GECÝK              
-                      00030 
+0006   00A0           00018 MOVWF SAY
+                      00019 
+0007                  00020 DEVAM ;ANADÖNGÜ
+0007   0820           00021         MOVF SAY,W ;SAY DEÐERÝNÝ W YE KOPYALA/ATA : W=SAY
+0008   390F           00022         ANDLW B'00001111' ;SAYININ(W) 15 i GEÇMEMESÝNÝ SAÐLAYAN AND ÝÞLEMÝ
+                      00023 
+0009   2???           00024         CALL SEVSEG
+000A   0086           00025         MOVWF PORTB ;PORTA GÖNDER
+000B   0AA0           00026         INCF SAY,F ;SAY = SAY+1
+                      00027         
+000C   2???           00028         CALL GECÝK              
+                      00029 
 Warning[203]: Found opcode in column 1. (GOTO)
-010D   2???           00031 GOTO DEVAM
-                      00032 
-Warning[207]: Found label after column 1. (SEVSEG)
-010E                  00033         SEVSEG
-010E   0782           00034                 ADDWF PCL,F
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  2
+000D   2???           00030 GOTO DEVAM
+                      00031 
+                      00032 ;GECÝKME FONK.(alt program)
+000E                  00033 GECÝK 
+000E   30FF           00034         movlw .255 
+000F   00A1           00035         movwf N
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00035                 ;Sayýlarýn asci kodlarý
-010F   343F           00036                 RETLW H'3F'
-0110   3406           00037                 RETLW H'06'
-0111   345B           00038                 RETLW H'5B'
-0112   344F           00039                 RETLW H'4F'
-0113   3466           00040                 RETLW H'66'
-0114   346D           00041                 RETLW H'6D'
-0115   347D           00042                 RETLW H'7D'
-0116   3407           00043                 RETLW H'07'
-0117   347F           00044                 RETLW H'7F'
-0118   346F           00045                 RETLW H'6F'
-0119   3477           00046                 RETLW H'77'
-011A   347C           00047                 RETLW H'7C'
-011B   3439           00048                 RETLW H'39'
-011C   345E           00049                 RETLW H'5E'
-011D   3479           00050                 RETLW H'79'
-011E   3471           00051                 RETLW H'71'
-                      00052                 
-011F                  00053 GECÝK
-011F   30FF           00054         movlw d'255'
-0120   00A1           00055         movwf N
-Warning[207]: Found label after column 1. (SAY1)
-0121                  00056         SAY1
-0121   30FF           00057                 MOVLW d'255'
-0122   00A2           00058                 MOVWF M
-Warning[207]: Found label after column 1. (SAY2)
-0123                  00059                 SAY2
-0123   0BA2           00060                         DECFSZ M,F
-0124   2???           00061                 GOTO SAY2
-0125   0BA1           00062                 DECFSZ N,F
-0126   2???           00063         GOTO SAY1       
-                      00064 
-Warning[203]: Found opcode in column 1. (RETURN)
-0127   0008           00065 RETURN
+Warning[207]: Found label after column 1. (say1)
+0010                  00036         say1
+0010   30FF           00037         movlw .255 
+0011   00A2           00038         movwf M
+Warning[207]: Found label after column 1. (say2)
+0012                  00039         say2
+0012   0BA2           00040                 decfsz M,F
+0013   2???           00041         goto say2
+0014   0BA1           00042         decfsz N,F              
+                      00043 
+0015   2???           00044         goto say1
+Warning[203]: Found opcode in column 1. (return)
+0016   0008           00045 return
+                      00046 
+0017                  00047 SEVSEG
+0017   0782           00048                 ADDWF PCL,F
+                      00049                 ;Sayýlarýn asci kodlarý
+0018   343F           00050                 RETLW H'3F' ;0
+0019   3406           00051                 RETLW H'06' ;1
+001A   345B           00052                 RETLW H'5B' ;2
+001B   344F           00053                 RETLW H'4F' ;3
+001C   3466           00054                 RETLW H'66' ;4
+001D   346D           00055                 RETLW H'6D' ;5
+001E   347D           00056                 RETLW H'7D' ;6
+001F   3407           00057                 RETLW H'07' ;7
+0020   347F           00058                 RETLW H'7F' ;8
+0021   346F           00059                 RETLW H'6F' ;9
+0022   3477           00060                 RETLW H'77' ;A
+0023   347C           00061                 RETLW H'7C' ;b
+0024   3439           00062                 RETLW H'39' ;C
+0025   345E           00063                 RETLW H'5E' ;D
+0026   3479           00064                 RETLW H'79' ;e
+0027   3471           00065                 RETLW H'71' ;F
+                      00066  
 Warning[205]: Found directive in column 1. (END)
-                      00066 END
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  3
+                      00067 END
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  3
 
 
 SYMBOL TABLE
@@ -158,13 +158,13 @@ CSRC                              00000007
 D                                 00000005
 DATA_ADDRESS                      00000005
 DC                                00000001
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  4
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  4
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-DEVAM                             00000107
+DEVAM                             00000007
 D_A                               00000005
 D_NOT_A                           00000005
 EEADR                             0000010D
@@ -180,7 +180,7 @@ F                                 00000001
 FERR                              00000002
 FSR                               00000004
 GCEN                              00000007
-GECÝK                             0000011F
+GECÝK                             0000000E
 GIE                               00000007
 GO                                00000002
 GO_DONE                           00000002
@@ -217,7 +217,7 @@ OBF                               00000006
 OERR                              00000001
 OPTION_REG                        00000081
 P                                 00000004
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  5
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  5
 
 
 SYMBOL TABLE
@@ -276,7 +276,7 @@ RC6                               00000006
 RC7                               00000007
 RC8_9                             00000006
 RC9                               00000006
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  6
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  6
 
 
 SYMBOL TABLE
@@ -310,10 +310,8 @@ R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
 SAY                               00000020
-SAY1                              00000121
-SAY2                              00000123
 SEN                               00000000
-SEVSEG                            0000010E
+SEVSEG                            00000017
 SMP                               00000007
 SPBRG                             00000099
 SPEN                              00000007
@@ -335,14 +333,14 @@ STATUS                            00000003
 SYNC                              00000004
 T0CS                              00000005
 T0IE                              00000005
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  7
+T0IF                              00000002
+T0SE                              00000004
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  7
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-T0IF                              00000002
-T0SE                              00000004
 T1CKPS0                           00000004
 T1CKPS1                           00000005
 T1CON                             00000010
@@ -394,14 +392,14 @@ TRISC3                            00000003
 TRISC4                            00000004
 TRISC5                            00000005
 TRISC6                            00000006
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  8
+TRISC7                            00000007
+TRISD                             00000088
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-TRISC7                            00000007
-TRISD                             00000088
 TRISD0                            00000000
 TRISD1                            00000001
 TRISD2                            00000002
@@ -453,14 +451,14 @@ _HS_OSC                           00003FFE
 _IDLOC0                           00002000
 _IDLOC1                           00002001
 _IDLOC2                           00002002
-MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-4-2024  15:40:57         PAGE  9
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+MPASM  5.50     008_SEVEN_SEGMENT_DISPLAY.ASM   1-13-2024  13:15:34         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-_IDLOC3                           00002003
-_LP_OSC                           00003FFC
 _LVP_OFF                          00003F7F
 _LVP_ON                           00003FFF
 _PWRTE_OFF                        00003FFF
@@ -477,9 +475,11 @@ _WRT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F877                          00000001
 __DEBUG                           1
+say1                              00000010
+say2                              00000012
 
 Errors   :     0
-Warnings :    13 reported,     0 suppressed
+Warnings :    12 reported,     0 suppressed
 Messages :     1 reported,     0 suppressed
 
 
