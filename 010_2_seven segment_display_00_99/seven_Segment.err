@@ -1,0 +1,13 @@
+Warning[205] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 1 : Found directive in column 1. (include)
+Warning[205] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 3 : Found directive in column 1. (ORG)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 6 : Found opcode in column 1. (BSF)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 8 : Found opcode in column 1. (CLRF)
+Message[302] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 8 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 9 : Found opcode in column 1. (CLRF)
+Message[302] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 11 : Found opcode in column 1. (BCF)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 14 : Found opcode in column 1. (CLRF)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 15 : Found opcode in column 1. (CLRF)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 49 : Found opcode in column 1. (GOTO)
+Warning[203] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 63 : Found opcode in column 1. (return)
+Warning[205] C:\PIC\010_2_SEVEN SEGMENT_DISPLAY_2\SEVEN_SEGMENT.ASM 79 : Found directive in column 1. (END)

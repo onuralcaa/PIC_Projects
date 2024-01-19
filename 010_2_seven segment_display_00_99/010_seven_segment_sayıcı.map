@@ -1,0 +1,44 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Fri Jan 19 23:41:11 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00005e
+                   .cinit    romdata   0x00002f    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000030      
+            49 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+              DELAY_LOOP1   0x00001d    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+              DELAY_LOOP2   0x00001f    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                     DISP   0x000013    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                    GECIK   0x00001b    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                MAIN_LOOP   0x000006    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                    RESET   0x000011    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                   SEVSEG   0x000024    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                MAIN_LOOP   0x000006    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                    RESET   0x000011    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                     DISP   0x000013    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                    GECIK   0x00001b    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+              DELAY_LOOP1   0x00001d    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+              DELAY_LOOP2   0x00001f    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+                   SEVSEG   0x000024    program     static C:\PIC\010_2_seven segment_display_2\seven_Segment.asm
+
+
