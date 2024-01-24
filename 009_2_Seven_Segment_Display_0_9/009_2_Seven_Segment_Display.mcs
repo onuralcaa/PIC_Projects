@@ -2,7 +2,7 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.o
+Location=C:\PIC\009_2_Seven_Segment_Display_0_9\009_2_Seven_Segment_Display.o
 Folder=Intermediary
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -15,7 +15,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File001]
-Location=C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.err
+Location=C:\PIC\009_2_Seven_Segment_Display_0_9\009_2_Seven_Segment_Display.err
 Folder=Intermediary
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -28,7 +28,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File002]
-Location=C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.lst
+Location=C:\PIC\009_2_Seven_Segment_Display_0_9\009_2_Seven_Segment_Display.lst
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -41,7 +41,7 @@ ToolArgsString=
 TraceCmdString=
 DebugOptions=/d__DEBUG=1
 [File003]
-Location=C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.cof
+Location=C:\PIC\009_2_Seven_Segment_Display_0_9\009_2_Seven_Segment_Display.cof
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
@@ -54,7 +54,7 @@ ToolArgsString=/o"$(BINDIR_)$(TARGETBASE).cof" /M"$(BINDIR_)$(TARGETBASE).map" /
 TraceCmdString=
 DebugOptions=/z__MPLAB_DEBUG=1
 [File004]
-Location=C:\PIC\009_2_Seven_Segment_Display\009_2_Seven_Segment_Display.hex
+Location=C:\PIC\009_2_Seven_Segment_Display_0_9\009_2_Seven_Segment_Display.hex
 Folder=Output
 DeviceName=PIC16F877
 LanguageToolSuiteID={6B3DAA78-59C1-46DD-B6AA-DBDAE4E06484}
