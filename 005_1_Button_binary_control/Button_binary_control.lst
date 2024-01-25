@@ -1,12 +1,11 @@
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  1
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00001 ;D portune baðlý 8 adet led ile binary sayma iþlemi
-                      00002 
-                      00003         include "P16F877.INC"
+Warning[205]: Found directive in column 1. (include)
+                      00001 include "P16F877.INC"
                       00001         LIST
                       00002 
                       00003 ;==========================================================================
@@ -16,64 +15,60 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00007 ;==========================================================================
                       00008 
                       00540         LIST
+                      00002 ;B portuna baðlý buton ile D portuna baðlý 8 adet ledi binary þekilde kontrol etmek.
+Warning[205]: Found directive in column 1. (org)
+                      00003 org 0x00
                       00004 
-                      00005         org 0x00
-                      00006 
-Warning[203]: Found opcode in column 1. (bcf)
-0000   1303           00007 bcf STATUS, RP1
-Warning[203]: Found opcode in column 1. (bsf)
-0001   1683           00008 bsf STATUS, RP0
-Warning[203]: Found opcode in column 1. (clrf)
+                      00005 ; PORT ayarlarý ve deðiþkenler
+0000   1303           00006     bcf STATUS, RP1
+0001   1683           00007     bsf STATUS, RP0     ; Bank 1 seçimi
 Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
-0002   0188           00009 clrf TRISD
-Warning[203]: Found opcode in column 1. (bcf)
-0003   1283           00010 bcf STATUS, RP0 ;bank0 seçildi
-Warning[203]: Found opcode in column 1. (clrf)
-0004   0188           00011 clrf PORTD
-  00000020            00012 N equ 0x20
-  00000021            00013 M equ 0x21
-                      00014 
-0005                  00015 devam;anadongu
-0005   3000           00016         movlw h'00'
-0006   0088           00017         movwf PORTD
-Warning[207]: Found label after column 1. (say)
-0007                  00018         say
-0007   2???           00019                 call gecikme
-0008   0F88           00020                 incfsz PORTD, F ;bir arttýr, sýfýr kontrolü yap (0 olduðunda 2 alt satýra geçer)
-0009   2???           00021         goto say
-                      00022 
-                      00023 
-Warning[203]: Found opcode in column 1. (GOTO)
-000A   2???           00024 GOTO devam
-                      00025 
-                      00026 ;GECÝKME FONK.(alt program)
-000B                  00027 gecikme 
-000B   30FF           00028         movlw .255 
-000C   00A0           00029         movwf N
-Warning[207]: Found label after column 1. (say1)
-000D                  00030         say1
-000D   30FF           00031         movlw .255 
-000E   00A1           00032         movwf M
-Warning[207]: Found label after column 1. (say2)
-000F                  00033         say2
-000F   0BA1           00034                 decfsz M,F
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  2
+0002   0188           00008     clrf TRISD          ; PORTD'yi çýkýþ olarak ayarla
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   1406           00009     bsf TRISB, 0        ; RB0 pinini giriþ olarak ayarla
+0004   1283           00010     bcf STATUS, RP0     ; Bank 0'a geri dön
+0005   0188           00011     clrf PORTD          ; PORTD'yi sýfýrla
+                      00012 
+  00000020            00013 N equ 0x20
+  00000021            00014 M equ 0x21
+                      00015 
+0006                  00016 ANADONGU:
+0006   1C06           00017     btfss PORTB, 0     ; Buton kontrolü (RB0)
+0007   2???           00018     goto ANADONGU     ; Buton basýlmadýysa döngüye devam et
+0008   2???           00019     call GECIK         ; Buton basýlýysa gecikme fonksiyonunu çaðýr
+0009   0A88           00020     incf PORTD, F      ; PORTD'deki deðeri 1 arttýr
+                      00021 
+000A                  00022 button_kontrol:
+000A   1806           00023     btfsc PORTB, 0     ; Butonun býrakýldýðýný kontrol et
+000B   2???           00024     goto button_kontrol ; Buton býrakýlana kadar bekle
+000C   2???           00025     call GECIK         ; Buton býrakýldýðýnda gecikme fonksiyonunu tekrar çaðýr
+000D   2???           00026     goto ANADONGU     ; Ana döngüye geri dön
+                      00027 
+                      00028 ; GECIK alt programý
+000E                  00029 GECIK:
+000E   3032           00030     movlw D'50'       ; N için baþlangýç deðeri
+000F   00A0           00031     movwf N
+0010                  00032 SAY1:
+0010   3032           00033     movlw D'50'       ; M için baþlangýç deðeri
+0011   00A1           00034     movwf M
+                      00035 
+                      00036 ;TEK BEKLEME YETERLÝ GÖRÜLDÜ.
+                      00037 ;SAY2:
+                      00038     ;decfsz M, F        ; M'yi azalt ve sýfýr olup olmadýðýný kontrol et
+                      00039     ;goto SAY2    ; M sýfýr deðilse döngüye devam et
+0012   0BA0           00040     decfsz N, F        ; N'yi azalt ve sýfýr olup olmadýðýný kontrol et
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0010   2???           00035         goto say2
-0011   0BA0           00036         decfsz N,F              
-                      00037 
-0012   2???           00038         goto say1
-Warning[203]: Found opcode in column 1. (return)
-0013   0008           00039 return
-                      00040 
-                      00041  
-Warning[205]: Found directive in column 1. (END)
-                      00042 END
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  3
+0013   2???           00041     goto SAY1    ; N sýfýr deðilse döngüye devam et
+0014   0008           00042     return             ; Gecikme tamamlandý, fonksiyondan çýk
+                      00043 
+Warning[205]: Found directive in column 1. (end)
+                      00044 end                     ; Program sonu
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  3
 
 
 SYMBOL TABLE
@@ -93,6 +88,7 @@ ADIF                              00000006
 ADON                              00000000
 ADRESH                            0000001E
 ADRESL                            0000009E
+ANADONGU                          00000006
 BCLIE                             00000003
 BCLIF                             00000003
 BF                                00000000
@@ -131,13 +127,13 @@ CREN                              00000004
 CSRC                              00000007
 D                                 00000005
 DATA_ADDRESS                      00000005
-DC                                00000001
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  4
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  4
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+DC                                00000001
 D_A                               00000005
 D_NOT_A                           00000005
 EEADR                             0000010D
@@ -153,6 +149,7 @@ F                                 00000001
 FERR                              00000002
 FSR                               00000004
 GCEN                              00000007
+GECIK                             0000000E
 GIE                               00000007
 GO                                00000002
 GO_DONE                           00000002
@@ -189,14 +186,14 @@ OBF                               00000006
 OERR                              00000001
 OPTION_REG                        00000081
 P                                 00000004
-PCFG0                             00000000
-PCFG1                             00000001
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  5
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  5
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PCFG0                             00000000
+PCFG1                             00000001
 PCFG2                             00000002
 PCFG3                             00000003
 PCL                               00000002
@@ -248,14 +245,14 @@ RC6                               00000006
 RC7                               00000007
 RC8_9                             00000006
 RC9                               00000006
-RCD8                              00000000
-RCEN                              00000003
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  6
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  6
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RCD8                              00000000
+RCEN                              00000003
 RCIE                              00000005
 RCIF                              00000005
 RCREG                             0000001A
@@ -281,6 +278,7 @@ RX9D                              00000000
 R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
+SAY1                              00000010
 SEN                               00000000
 SMP                               00000007
 SPBRG                             00000099
@@ -306,15 +304,15 @@ T0IE                              00000005
 T0IF                              00000002
 T0SE                              00000004
 T1CKPS0                           00000004
-T1CKPS1                           00000005
-T1CON                             00000010
-T1INSYNC                          00000002
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  7
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  7
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
 T1OSCEN                           00000003
 T1SYNC                            00000002
 T2CKPS0                           00000000
@@ -365,15 +363,15 @@ TRISC6                            00000006
 TRISC7                            00000007
 TRISD                             00000088
 TRISD0                            00000000
-TRISD1                            00000001
-TRISD2                            00000002
-TRISD3                            00000003
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  8
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  8
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
 TRISD4                            00000004
 TRISD5                            00000005
 TRISD6                            00000006
@@ -424,15 +422,15 @@ _IDLOC2                           00002002
 _IDLOC3                           00002003
 _LP_OSC                           00003FFC
 _LVP_OFF                          00003F7F
-_LVP_ON                           00003FFF
-_PWRTE_OFF                        00003FFF
-_PWRTE_ON                         00003FF7
-MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:08:26         PAGE  9
+MPASM  5.50         BUTTON_BINARY_CONTROL.ASM   1-25-2024  14:21:56         PAGE  9
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
 _RC_OSC                           00003FFF
 _WDTE_OFF                         00003FFB
 _WDTE_ON                          00003FFF
@@ -445,14 +443,10 @@ _WRT_ON                           00003FFF
 _XT_OSC                           00003FFD
 __16F877                          00000001
 __DEBUG                           1
-devam                             00000005
-gecikme                           0000000B
-say                               00000007
-say1                              0000000D
-say2                              0000000F
+button_kontrol                    0000000A
 
 Errors   :     0
-Warnings :    11 reported,     0 suppressed
-Messages :     1 reported,     0 suppressed
+Warnings :     3 reported,     0 suppressed
+Messages :     2 reported,     0 suppressed
 
 
