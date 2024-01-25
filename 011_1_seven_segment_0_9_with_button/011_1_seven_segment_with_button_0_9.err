@@ -1,0 +1,8 @@
+Warning[205] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 1 : Found directive in column 1. (include)
+Warning[205] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 3 : Found directive in column 1. (org)
+Message[302] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 11 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Message[302] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 12 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[207] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 15 : Found label after column 1. (SAY)
+Warning[207] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 16 : Found label after column 1. (N)
+Warning[207] C:\PIC\011_1_SEVEN_SEGMENT_0_9_WITH_BUTTON\011_1_SEVEN_SEGMENT_WITH_BUTTON_0_9.ASM 17 : Found label after column 1. (M)

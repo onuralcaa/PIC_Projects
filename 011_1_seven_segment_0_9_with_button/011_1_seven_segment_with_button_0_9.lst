@@ -1,0 +1,486 @@
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (include)
+                      00001 include "P16F877.INC"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F877 processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00540         LIST
+                      00002 
+Warning[205]: Found directive in column 1. (org)
+                      00003 org 0x100           ; Ana program kodu için baþlangýç adresi
+                      00004 
+                      00005 
+                      00006     ; PORT AYARLARI
+0100   1303           00007     bcf STATUS, RP1
+0101   1683           00008     bsf STATUS, RP0     ; Bank 1
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0102   0187           00009     clrf TRISC          ; PORTC çýkýþ olarak ayarla
+0103   3006           00010     movlw 0x06
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0104   009F           00011     movwf ADCON1        ; A portunu dijital olarak ayarla
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0105   1405           00012     bsf TRISA, 0        ; RA0 giriþ olarak ayarlandý.
+0106   1283           00013     bcf STATUS, RP0     ; Bank 0
+                      00014 
+Warning[207]: Found label after column 1. (SAY)
+  00000020            00015     SAY EQU 0x20        ; Sayac deðiþkeni
+Warning[207]: Found label after column 1. (N)
+  00000021            00016     N EQU 0x21          ; Gecikme için kullanýlacak deðiþkenler
+Warning[207]: Found label after column 1. (M)
+  00000022            00017     M EQU 0x22          ; Gecikme için kullanýlacak deðiþkenler
+                      00018 
+0107   0185           00019     clrf PORTA
+0108   0187           00020     clrf PORTC          ; PORTC'yi sýfýrla (seven segment display'i sýfýrla)
+0109   01A0           00021     clrf SAY            ; SAY deðiþkenini sýfýrla
+                      00022 
+010A                  00023 ANA_DONGU: 
+010A   1805           00024     BTFSC PORTA, 0      ; RA0 pinini kontrol et (Buton basýlý mý?)
+010B   2???           00025     CALL BUTON_BASILDI  ; Eðer butona basýldýysa alt programý çaðýr
+010C   2???           00026     GOTO ANA_DONGU
+                      00027 
+010D                  00028 BUTON_BASILDI:
+010D   2???           00029     CALL GECIK          ; Buton debouncing için gecikme
+010E   1805           00030     BTFSC PORTA, 0      ; Buton hala basýlý mý kontrol et
+010F   0008           00031     RETURN              ; Hala basýlýysa ana döngüye dön
+0110   0AA0           00032     INCF SAY, F         ; SAY deðiþkenini arttýr
+0111   0820           00033     MOVF SAY, W         ; SAY deðiþkenini W kaydedicisine yükle
+0112   390F           00034     ANDLW b'00001111'   ; Sadece düþük nibble'ý al (0-9 arasý)
+0113   2???           00035     CALL SEVSEG         ; SEVSEG fonksiyonunu çaðýr
+0114   0087           00036     MOVWF PORTC         ; W kaydedicisindeki deðeri PORTC'ye yükle
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0115   0820           00037     MOVF SAY, W         ; SAY'ý tekrar W'ye yükle
+0116   3A0A           00038     XORLW .10           ; W ile 10'u XOR'la ve sonucu W'ye yaz
+0117   1903           00039     BTFSC STATUS, Z     ; Eðer sonuç sýfýr ise (W == 10 ise)
+0118   01A0           00040     CLRF SAY            ; SAY'ý sýfýrla
+0119   0008           00041     RETURN
+                      00042 
+011A                  00043 GECIK:
+011A   30FF           00044     movlw D'255'        ; Gecikme süresi
+011B   00A1           00045     movwf N
+011C                  00046 DONGU_N:
+011C   30FF           00047     movlw D'255'
+011D   00A2           00048     movwf M
+011E                  00049 DONGU_M:
+011E   0BA2           00050     decfsz M, F        
+011F   2???           00051     goto DONGU_M
+0120   0BA1           00052     decfsz N, F        
+0121   2???           00053     goto DONGU_N
+0122   0008           00054     return
+                      00055 
+0123                  00056 SEVSEG:
+0123   0782           00057     addwf PCL, F        ; PCL'ye W kaydedicisini ekle (tabloya atla)
+0124                  00058 RET_TABLO:
+0124   343F           00059     retlw b'00111111'   ; 0
+0125   3406           00060     retlw b'00000110'   ; 1
+0126   345B           00061     retlw b'01011011'   ; 2
+0127   344F           00062     retlw b'01001111'   ; 3
+0128   3466           00063     retlw b'01100110'   ; 4
+0129   346D           00064     retlw b'01101101'   ; 5
+012A   347D           00065     retlw b'01111101'   ; 6
+012B   3407           00066     retlw b'00000111'   ; 7
+012C   347F           00067     retlw b'01111111'   ; 8
+012D   346F           00068     retlw b'01101111'   ; 9
+                      00069     ; Tablo burada sonlanýyor, daha fazla deðer ekleyebilirsiniz.
+                      00070 
+                      00071     end
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+ACKDT                             00000005
+ACKEN                             00000004
+ACKSTAT                           00000006
+ADCON0                            0000001F
+ADCON1                            0000009F
+ADCS0                             00000006
+ADCS1                             00000007
+ADDEN                             00000003
+ADFM                              00000007
+ADIE                              00000006
+ADIF                              00000006
+ADON                              00000000
+ADRESH                            0000001E
+ADRESL                            0000009E
+ANA_DONGU                         0000010A
+BCLIE                             00000003
+BCLIF                             00000003
+BF                                00000000
+BRGH                              00000002
+BUTON_BASILDI                     0000010D
+C                                 00000000
+CCP1CON                           00000017
+CCP1IE                            00000002
+CCP1IF                            00000002
+CCP1M0                            00000000
+CCP1M1                            00000001
+CCP1M2                            00000002
+CCP1M3                            00000003
+CCP1X                             00000005
+CCP1Y                             00000004
+CCP2CON                           0000001D
+CCP2IE                            00000000
+CCP2IF                            00000000
+CCP2M0                            00000000
+CCP2M1                            00000001
+CCP2M2                            00000002
+CCP2M3                            00000003
+CCP2X                             00000005
+CCP2Y                             00000004
+CCPR1                             00000015
+CCPR1H                            00000016
+CCPR1L                            00000015
+CCPR2                             0000001B
+CCPR2H                            0000001C
+CCPR2L                            0000001B
+CHS0                              00000003
+CHS1                              00000004
+CHS2                              00000005
+CKE                               00000006
+CKP                               00000004
+CREN                              00000004
+CSRC                              00000007
+D                                 00000005
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+DATA_ADDRESS                      00000005
+DC                                00000001
+DONGU_M                           0000011E
+DONGU_N                           0000011C
+D_A                               00000005
+D_NOT_A                           00000005
+EEADR                             0000010D
+EEADRH                            0000010F
+EECON1                            0000018C
+EECON2                            0000018D
+EEDATA                            0000010C
+EEDATH                            0000010E
+EEIE                              00000004
+EEIF                              00000004
+EEPGD                             00000007
+F                                 00000001
+FERR                              00000002
+FSR                               00000004
+GCEN                              00000007
+GECIK                             0000011A
+GIE                               00000007
+GO                                00000002
+GO_DONE                           00000002
+GO_NOT_DONE                       00000002
+I2C_DATA                          00000005
+I2C_READ                          00000002
+I2C_START                         00000003
+I2C_STOP                          00000004
+IBF                               00000007
+IBOV                              00000005
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+M                                 00000022
+N                                 00000021
+NOT_A                             00000005
+NOT_ADDRESS                       00000005
+NOT_BO                            00000000
+NOT_BOR                           00000000
+NOT_DONE                          00000002
+NOT_PD                            00000003
+NOT_POR                           00000001
+NOT_RBPU                          00000007
+NOT_RC8                           00000006
+NOT_T1SYNC                        00000002
+NOT_TO                            00000004
+NOT_TX8                           00000006
+NOT_W                             00000002
+NOT_WRITE                         00000002
+OBF                               00000006
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+OERR                              00000001
+OPTION_REG                        00000081
+P                                 00000004
+PCFG0                             00000000
+PCFG1                             00000001
+PCFG2                             00000002
+PCFG3                             00000003
+PCL                               00000002
+PCLATH                            0000000A
+PCON                              0000008E
+PEIE                              00000006
+PEN                               00000002
+PIE1                              0000008C
+PIE2                              0000008D
+PIR1                              0000000C
+PIR2                              0000000D
+PORTA                             00000005
+PORTB                             00000006
+PORTC                             00000007
+PORTD                             00000008
+PORTE                             00000009
+PR2                               00000092
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PSPIE                             00000007
+PSPIF                             00000007
+PSPMODE                           00000004
+R                                 00000002
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RA5                               00000005
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RC0                               00000000
+RC1                               00000001
+RC2                               00000002
+RC3                               00000003
+RC4                               00000004
+RC5                               00000005
+RC6                               00000006
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RC7                               00000007
+RC8_9                             00000006
+RC9                               00000006
+RCD8                              00000000
+RCEN                              00000003
+RCIE                              00000005
+RCIF                              00000005
+RCREG                             0000001A
+RCSTA                             00000018
+RD                                00000000
+RD0                               00000000
+RD1                               00000001
+RD2                               00000002
+RD3                               00000003
+RD4                               00000004
+RD5                               00000005
+RD6                               00000006
+RD7                               00000007
+RE0                               00000000
+RE1                               00000001
+RE2                               00000002
+READ_WRITE                        00000002
+RET_TABLO                         00000124
+RP0                               00000005
+RP1                               00000006
+RSEN                              00000001
+RX9                               00000006
+RX9D                              00000000
+R_NOT_W                           00000002
+R_W                               00000002
+S                                 00000003
+SAY                               00000020
+SEN                               00000000
+SEVSEG                            00000123
+SMP                               00000007
+SPBRG                             00000099
+SPEN                              00000007
+SREN                              00000005
+SSPADD                            00000093
+SSPBUF                            00000013
+SSPCON                            00000014
+SSPCON2                           00000091
+SSPEN                             00000005
+SSPIE                             00000003
+SSPIF                             00000003
+SSPM0                             00000000
+SSPM1                             00000001
+SSPM2                             00000002
+SSPM3                             00000003
+SSPOV                             00000006
+SSPSTAT                           00000094
+STATUS                            00000003
+SYNC                              00000004
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+T1CKPS0                           00000004
+T1CKPS1                           00000005
+T1CON                             00000010
+T1INSYNC                          00000002
+T1OSCEN                           00000003
+T1SYNC                            00000002
+T2CKPS0                           00000000
+T2CKPS1                           00000001
+T2CON                             00000012
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TMR1                              0000000E
+TMR1CS                            00000001
+TMR1H                             0000000F
+TMR1IE                            00000000
+TMR1IF                            00000000
+TMR1L                             0000000E
+TMR1ON                            00000000
+TMR2                              00000011
+TMR2IE                            00000001
+TMR2IF                            00000001
+TMR2ON                            00000002
+TOUTPS0                           00000003
+TOUTPS1                           00000004
+TOUTPS2                           00000005
+TOUTPS3                           00000006
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISA5                            00000005
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+TRISC                             00000087
+TRISC0                            00000000
+TRISC1                            00000001
+TRISC2                            00000002
+TRISC3                            00000003
+TRISC4                            00000004
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  8
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TRISC5                            00000005
+TRISC6                            00000006
+TRISC7                            00000007
+TRISD                             00000088
+TRISD0                            00000000
+TRISD1                            00000001
+TRISD2                            00000002
+TRISD3                            00000003
+TRISD4                            00000004
+TRISD5                            00000005
+TRISD6                            00000006
+TRISD7                            00000007
+TRISE                             00000089
+TRISE0                            00000000
+TRISE1                            00000001
+TRISE2                            00000002
+TRMT                              00000001
+TX8_9                             00000006
+TX9                               00000006
+TX9D                              00000000
+TXD8                              00000000
+TXEN                              00000005
+TXIE                              00000004
+TXIF                              00000004
+TXREG                             00000019
+TXSTA                             00000098
+UA                                00000001
+W                                 00000000
+WCOL                              00000007
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_BODEN_OFF                        00003FBF
+_BODEN_ON                         00003FFF
+_BOREN_OFF                        00003FBF
+_BOREN_ON                         00003FFF
+_CONFIG                           00002007
+_CPD_OFF                          00003FFF
+_CPD_ON                           00003EFF
+_CP_ALL                           00000FCF
+_CP_HALF                          00001FDF
+_CP_OFF                           00003FFF
+_CP_UPPER_256                     00002FEF
+_DEBUG_OFF                        00003FFF
+_DEBUG_ON                         000037FF
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+MPASM  5.50  011_1_SEVEN_SEGMENT_WITH_BUTTON_   1-25-2024  14:05:53         PAGE  9
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_LVP_OFF                          00003F7F
+_LVP_ON                           00003FFF
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_WRT_ENABLE_OFF                   00003DFF
+_WRT_ENABLE_ON                    00003FFF
+_WRT_OFF                          00003DFF
+_WRT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F877                          00000001
+__DEBUG                           1
+
+Errors   :     0
+Warnings :     5 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+
