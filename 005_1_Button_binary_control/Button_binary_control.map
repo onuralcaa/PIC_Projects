@@ -1,0 +1,40 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Thu Jan 25 14:08:27 2024
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000028
+                   .cinit    romdata   0x000014    program   0x000004
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000015      
+            22 out of 8454 program addresses used, program memory utilization is 0%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    devam   0x000005    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                  gecikme   0x00000b    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                      say   0x000007    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                     say1   0x00000d    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                     say2   0x00000f    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                    devam   0x000005    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                      say   0x000007    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                  gecikme   0x00000b    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                     say1   0x00000d    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+                     say2   0x00000f    program     static C:\PIC\005_1_Button_binary_control\Button_binary_control.asm
+
+

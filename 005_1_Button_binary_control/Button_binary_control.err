@@ -1,0 +1,12 @@
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 7 : Found opcode in column 1. (bcf)
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 8 : Found opcode in column 1. (bsf)
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 9 : Found opcode in column 1. (clrf)
+Message[302] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 10 : Found opcode in column 1. (bcf)
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 11 : Found opcode in column 1. (clrf)
+Warning[207] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 18 : Found label after column 1. (say)
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 24 : Found opcode in column 1. (GOTO)
+Warning[207] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 30 : Found label after column 1. (say1)
+Warning[207] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 33 : Found label after column 1. (say2)
+Warning[203] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 39 : Found opcode in column 1. (return)
+Warning[205] C:\PIC\005_1_BUTTON_BINARY_CONTROL\BUTTON_BINARY_CONTROL.ASM 42 : Found directive in column 1. (END)
